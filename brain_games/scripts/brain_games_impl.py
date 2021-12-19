@@ -3,11 +3,7 @@
 # file <brain_games_impl.py>
 
 from brain_games.scripts.cli import welcome_user
-
-
-def greet():
-    """Greeting of new user function."""
-    print('Welcome to the Brain Games!')
+from brain_games.scripts.cli import greet
 
 
 def main():

@@ -9,16 +9,13 @@ from brain_games.scripts.cli import welcome_user
 from brain_games.scripts.cli import get_answer
 from brain_games.scripts.cli import successful_bye
 from brain_games.scripts.cli import unsuccessful_bye
+from brain_games.scripts.cli import print_result
+from brain_games.scripts.cli import print_question
 
 import prompt
 
-
 def print_description():
     print('Answer "yes" if the number is even, otherwise answer "no".')
-
-
-def print_question(number: int):
-    print('Question: ', number)
 
 
 def answer_interprener(answer: str):
@@ -30,13 +27,6 @@ def answer_interprener(answer: str):
 
 def answer_checker(answer: int, number: int):
     return answer == (number % 2 == 0)
-
-
-def print_result(result: bool):
-    if result:
-        print("Correct!")
-    else:
-        print("Uncorrect!")
 
 
 def game(numbers: List[int], name: str):

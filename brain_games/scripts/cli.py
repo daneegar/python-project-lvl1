@@ -3,16 +3,26 @@
 import prompt
 
 
+def greet():
+    """Greeting of new user function."""
+    print('Welcome to the Brain Games!')
+
+
 def welcome_user():
-    """Invite to name user."""
+    """Invite naming user."""
     name = prompt.string('May I have your name? ').strip()
     sentence = ''.join(['Hello', ' ', name, '!'])
-    print(sentence)
+    print('Hello, {}!'.format(name))
     return name
 
 
+def print_question(arg):
+    """Printing common question"""
+    print('Question: {}'.format(arg))
+
+
 def successful_bye(name: str):
-    print('Congratulations,', name + '!')
+    print('Congratulations, {}!'.format(name))
 
 
 def unsuccessful_bye(name: str):
@@ -21,3 +31,10 @@ def unsuccessful_bye(name: str):
 
 def get_answer():
     return prompt.string("Your answer: ").strip()
+
+
+def print_result(result: bool):
+    if result:
+        print("Correct!")
+    else:
+        print("Incorrect!")

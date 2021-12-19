@@ -6,42 +6,33 @@ from random import randrange
 from typing import List
 
 from brain_games.scripts.cli import welcome_user
+from brain_games.scripts.cli import get_answer
+from brain_games.scripts.cli import successful_bye
+from brain_games.scripts.cli import unsuccessful_bye
 
 import prompt
 
 
-def welcome():
+def print_description():
     print('Answer "yes" if the number is even, otherwise answer "no".')
 
 
-def successful_bye(name):
-    print('Congratulations,', name + '!')
-
-
-def unsuccessful_bye(name):
-    print('See you next time,', name + '!')
-
-
-def print_question(number):
+def print_question(number: int):
     print('Question: ', number)
 
 
-def get_answer():
-    return prompt.string("Your answer: ").strip()
-
-
-def answer_interprener(answer):
+def answer_interprener(answer: str):
     if answer == 'Yes' or answer == 'y':
         return True
     else:
         return False
 
 
-def answer_checker(answer, number):
+def answer_checker(answer: int, number: int):
     return answer == (number % 2 == 0)
 
 
-def print_result(result):
+def print_result(result: bool):
     if result:
         print("Correct!")
     else:
@@ -49,7 +40,7 @@ def print_result(result):
 
 
 def game(numbers: List[int], name: str):
-    resultIsSuccessful = True
+    result_is_successful = True
 
     for number in numbers:
         print_question(number)
@@ -59,7 +50,7 @@ def game(numbers: List[int], name: str):
         if not guess:
             result_is_successful = guess
 
-    if resultIsSuccessful:
+    if result_is_successful:
         successful_bye(name)
     else:
         unsuccessful_bye(name)
@@ -68,7 +59,7 @@ def game(numbers: List[int], name: str):
 def main():
     """Run brain even game"""
     name = welcome_user()
-    welcome()
+    print_description()
     numbers = []
     for _ in range(3):
         numbers.append(randrange(10))

@@ -3,7 +3,9 @@
 # file <brain_even.py>
 
 from random import randrange
-from .cli import welcome_user
+from typing import List
+
+from brain_games.scripts.cli import welcome_user
 
 import prompt
 
@@ -11,53 +13,57 @@ import prompt
 def welcome():
     print('Answer "yes" if the number is even, otherwise answer "no".')
 
-def successfulBye(name):
-    print('Congratulations,', name+'!')
 
-def unsuccessfulBye(name):
-    print('See you next time,', name+'!')
+def successful_bye(name):
+    print('Congratulations,', name + '!')
 
-def printQuestion(number):
+
+def unsuccessful_bye(name):
+    print('See you next time,', name + '!')
+
+
+def print_question(number):
     print('Question: ', number)
 
 
-def getAnswer():
+def get_answer():
     return prompt.string("Your answer: ").strip()
 
 
-def answerInterprener(answer):
+def answer_interprener(answer):
     if answer == 'Yes' or answer == 'y':
         return True
     else:
         return False
 
 
-def answerChecker(answer, number):
+def answer_checker(answer, number):
     return answer == (number % 2 == 0)
 
 
-def printResult(result):
+def print_result(result):
     if result:
         print("Correct!")
     else:
         print("Uncorrect!")
 
 
-def game(numbers, name):
+def game(numbers: List[int], name: str):
     resultIsSuccessful = True
 
     for number in numbers:
-        printQuestion(number)
-        answer = answerInterprener(getAnswer())
-        guess = answerChecker(answer, number)
-        printResult(guess)
-        if guess == False:
-            resultIsSuccessful = guess
+        print_question(number)
+        answer = answer_interprener(get_answer())
+        guess = answer_checker(answer, number)
+        print_result(guess)
+        if not guess:
+            result_is_successful = guess
 
     if resultIsSuccessful:
-        successfulBye(name)
+        successful_bye(name)
     else:
-        unsuccessfulBye(name)
+        unsuccessful_bye(name)
+
 
 def main():
     """Run brain even game"""
@@ -67,6 +73,7 @@ def main():
     for _ in range(3):
         numbers.append(randrange(10))
     game(numbers, name)
+
 
 if __name__ == '__main__':
     main()

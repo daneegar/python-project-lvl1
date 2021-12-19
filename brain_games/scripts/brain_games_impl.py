@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Don't know what I have to write here."""
-# file <brain_games.py>
+# file <brain_games_impl.py>
 
-from .cli import welcome_user
+from brain_games.scripts.cli import welcome_user
 
 
 def greet():
